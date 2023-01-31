@@ -11,7 +11,9 @@ describe("application", () => {
     const subtitleElement = screen.getByRole("heading", { level: 2 });
     expect(subtitleElement).toBeInTheDocument();
 
-    const paraElement = screen.getByText("All fields are mandatory");
+    // const paraElement = screen.getByText("All fields are mandatory");
+    // const paraElement = screen.getByText(/fields are/i);
+    const paraElement = screen.getByText((content) => content.endsWith("are mandatory"));
     expect(paraElement).toBeInTheDocument();
 
     const spanElement = screen.getByTitle("close");
@@ -20,7 +22,7 @@ describe("application", () => {
     const customElement = screen.getByTestId("custom-element");
     expect(customElement).toBeInTheDocument();
 
-    const imgElement = screen.getByAltText("a person with a laptop");
+    const imgElement = screen.getByAltText(/laptop/);
     expect(imgElement).toBeInTheDocument();
 
     const textElement = screen.getByPlaceholderText("Fullname");
